@@ -1,0 +1,119 @@
+1. Searching a number :- 
+
+Given an array Arr of N elements and an integer K. Your task is to return the position
+of first occurrence of K in the given array.
+Note: Position of first element is considered as 1.
+
+Input:
+N = 5, K = 16
+Arr[] = {9, 7, 2, 16, 4}
+
+Complete the function search () which takes
+i) arrray arr,
+ii) two integers n and k, as input parameters
+iii) returns an integer as answer.
+iv) Return -1 if the number is not found in array. (No need to print answer or take
+inputs)
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+Constraints:
+1 <= N <= 106
+1 <= K <= 106
+1 <= Arr[i] <= 106
+
+
+
+solution 1:- 
+
+import java.io.*;
+import java.util.*;
+
+  
+public class Main
+{
+    public static int Search(int[] arr, int key){    
+        for(int i=0;i<arr.length;i++){    
+            if(arr[i] == key){    
+                return i+1;    
+            }    
+        }    
+        return -1;    
+    }    
+    
+	public static void main(String[] args) {
+		
+		int n,k;
+		Scanner sc= new Scanner(System.in);
+		n= sc.nextInt(); 
+		k= sc.nextInt(); 
+		int arr[]=new int[n];
+  
+        for (int i = 0; i < n; i++){
+            int a= sc.nextInt(); 
+            arr[i] = a;
+	    }
+		
+		System.out.println(Search(arr, k));
+	}
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Balanced array
+Given an array of even size N, task is to find minimum value that can be added to an
+element so that array become balanced. An array is balanced if the sum of the left half of
+the array elements is equal to the sum of right half.
+Input:
+N = 4
+arr[] = {1, 5, 3, 2}
+Complete the function minValueToBalance() which takes
+i) array a[ ] and N as inputs
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+Constraints:
+2<=N<=107
+N%2==0 
+
+solution 2:- 
+
+
+import java.io.*;
+import java.util.*;
+
+  
+public class Main
+{
+    public static int minValueToBalance(int[] arr, int n){    
+        int l = n/2,sum1=0,sum2=0;
+        for(int i=0;i<l;i++){    
+            sum1+=arr[i];    
+        }
+        for(int i=l;i<n;i++){    
+            sum2+=arr[i];    
+        }
+        if(sum1>=sum2){
+            return sum1-sum2;        
+        }else{
+            return sum2-sum1;
+        }
+        
+    }    
+    
+	public static void main(String[] args) {
+		
+		int n,k;
+		Scanner sc= new Scanner(System.in);
+		n= sc.nextInt(); 
+		
+		int arr[]=new int[n];
+  
+        for (int i = 0; i < n; i++){
+            int a= sc.nextInt(); 
+            arr[i] = a;
+	    }
+		
+		System.out.println(minValueToBalance(arr, n));
+	}
+}

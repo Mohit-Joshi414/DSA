@@ -1,0 +1,103 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int findValue(string s,vector<int> part1,vector<int> part2){
+    string str;
+    const unsigned int M = 1000000007;
+    map<char,int> m;
+    for(int i=0;i<s.length();i++){
+        m[s[i]]=0;
+    }
+    for(int i=0;i<part1.size();i++){
+        str+=s.substr(part1[i]-1,part2[i]);
+    }
+    for(int i=0;i<str.length();i++){
+        m[str[i]]++;
+    }
+    int mul = 1;
+    for(auto b:m){
+        mul = ((mul%M) * (b.second%M))%M;
+    }
+    return mul;
+    
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    int Q;
+    cin>>Q;
+    vector<int> part1(Q);
+    for(int j=0;j<Q;j++){
+        cin>>part1[j];
+    }
+    vector<int> part2(Q);
+    for(int j=0;j<Q;j++){
+        cin>>part2[j];
+    }
+    int result;
+    result = findValue(s,part1,part2);
+    cout<<result;
+
+    return 0;
+}
+
+
+
+//another approach
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int findValue(string s,vector<int> part1,vector<int> part2){
+    string str;
+    const unsigned int M = 1000000007;
+    map<char,int> m;
+    for(int i=0;i<s.length();i++){
+        m[s[i]]=0;
+    }
+    for(int i=0;i<part1.size();i++){
+        for(int j=part1[i]-1;j<(part1[i]+part2[i]-1);j++){
+            m[s[j]]++;
+        }
+        // str+=s.substr(part1[i]-1,part2[i]);
+    }
+    // for(int i=0;i<str.length();i++){
+        
+    // }
+    int mul = 1;
+    for(auto b:m){
+        cout<<b.first<<" "<<b.second<<endl;
+        mul = ((mul%M) * (b.second%M))%M;
+    }
+    return mul;
+    
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    int Q;
+    cin>>Q;
+    vector<int> part1(Q);
+    for(int j=0;j<Q;j++){
+        cin>>part1[j];
+    }
+    vector<int> part2(Q);
+    for(int j=0;j<Q;j++){
+        cin>>part2[j];
+    }
+    int result;
+    result = findValue(s,part1,part2);
+    cout<<result;
+
+    return 0;
+}

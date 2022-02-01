@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int calculateMinimumOperations(int N, vector<int> A){
+    int sum=0;
+    const unsigned int M = 1000000007;
+    int s=A.size();
+    for(int i=0;i<s;i++){
+        sum+=A[i];
+    }
+    if(sum%s==0){
+        int count=0;
+        while(1){
+            int k=0;
+            for(int i=0;i<s-1;i++){
+                if(A[i]>A[i+1]){
+                    A[i]--;
+                    A[i+1]++;
+                    count= ((count%M)+1)%M;
+                    k++;
+                }
+                else if(A[i]<A[i+1]){
+                    A[i]++;
+                    A[i+1]--;
+                    count= ((count%M)+1)%M;
+                    k++;
+                }
+                
+            }
+            if(k==0){
+                break;
+            }
+        }
+        return count%M;    
+    }
+    else{
+        return -1;
+    }
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    
+    int result = calculateMinimumOperations(n, v);
+    cout<<result;
+
+    return 0;
+}

@@ -1,0 +1,62 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int id = sc.nextInt();
+        double balance = sc.nextDouble();
+        double interestRate = sc.nextDouble();
+        Account ac = new Account(id, balance, interestRate);
+        int noOfYears = sc.nextInt();
+        
+        double interest = calculateInterest(ac, noOfYears);
+        System.out.print(interest);
+    }
+    
+    public static double calculateInterest(Account a, int noOfYears)
+    {
+        
+    }
+}
+
+class Account
+{
+    
+    private int id;
+    private double balance, interestRate;
+    
+    public int getId(){
+        return id;
+    }
+    
+    public double getBalance(){
+        return balance;
+    }
+    
+    public double getInterestRate(){
+        return interestRate;
+    }
+    
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+    
+    public void setInterestRate(double interestRate){
+        this.interestRate = interestRate;
+    }
+    
+    public Account(int id, double balance, double interestRate){
+        this.id = id;
+        this.balance = balance;
+        this.interestRate = interestRate;
+    }
+}
